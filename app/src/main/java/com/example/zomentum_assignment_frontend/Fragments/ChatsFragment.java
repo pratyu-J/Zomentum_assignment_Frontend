@@ -39,8 +39,16 @@ public class ChatsFragment extends Fragment {
 
         recyclerView = v.findViewById(R.id.recent_chats);
         recyclerView.setHasFixedSize(true);
-
+        fillData();
         recyclerAdapter = new FriendsRecyclerAdapter(getContext(),list , true);
+        recyclerView.setAdapter(recyclerAdapter);
         return v;
+    }
+
+    public void fillData() {
+
+        list.add(new FriendDetailsClass("1", "becky", "", "offline"));
+
+        list.add(new FriendDetailsClass("2", "Chris", "", ""));
     }
 }

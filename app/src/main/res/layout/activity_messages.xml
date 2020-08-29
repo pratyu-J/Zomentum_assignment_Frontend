@@ -48,6 +48,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/chatrecycler"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_below="@id/bar_layout"
         android:layout_above="@+id/bottom"
         />

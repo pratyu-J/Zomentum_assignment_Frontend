@@ -40,8 +40,16 @@ public class FriendListFragment extends Fragment {
 
         recyclerView = v.findViewById(R.id.recycler_friend);
         recyclerView.setHasFixedSize(true);
-
+        fillData();
         recyclerAdapter = new FriendsRecyclerAdapter(getContext(),list , false);
+        recyclerView.setAdapter(recyclerAdapter);
         return v;
+    }
+
+    public void fillData(){
+        list.add(new FriendDetailsClass("1", "jojo", "", "offline"));
+        list.add(new FriendDetailsClass("1", "becky", "", "offline"));
+        list.add(new FriendDetailsClass("1", "adam", "", ""));
+        list.add(new FriendDetailsClass("1", "Chris", "", ""));
     }
 }

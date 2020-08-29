@@ -1,6 +1,7 @@
 package com.example.zomentum_assignment_frontend.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.zomentum_assignment_frontend.Activities.MessagesActivity;
 import com.example.zomentum_assignment_frontend.Classes.FriendDetailsClass;
 import com.example.zomentum_assignment_frontend.R;
 
@@ -43,12 +45,24 @@ public class FriendsRecyclerAdapter extends RecyclerView.Adapter<FriendsRecycler
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        FriendDetailsClass friendDetailsClass = friends.get(position);
+        final FriendDetailsClass friendDetailsClass = friends.get(position);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, MessagesActivity.class);
+                intent.putExtra("username", friendDetailsClass.getUsername());
+                mContext.startActivity(intent);
+            }
+        });
+
+        holder.username.setText(friendDetailsClass.getUsername());
 
         if(isChat){
             holder.lastMsg.setVisibility(View.VISIBLE);
             //holder.lastMsg.setText("hello");
+            holder.username.setText(friendDetailsClass.getUsername());
+
         }
         else {
             holder.lastMsg.setVisibility(View.GONE);

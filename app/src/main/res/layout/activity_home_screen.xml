@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toolbar"
-            android:background="#9010E60C"
+            android:background="@color/profile_back"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             app:popupTheme="@style/MenuStyle"
             app:menu="@menu/menu">
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:id="@+id/tab_layout"
-            android:background="#9010E60C"
+            android:background="@color/profile_back"
             android:layout_marginTop="1dp"
             app:tabSelectedTextColor="@color/colorAccent"
             app:tabIndicatorColor="@color/white"

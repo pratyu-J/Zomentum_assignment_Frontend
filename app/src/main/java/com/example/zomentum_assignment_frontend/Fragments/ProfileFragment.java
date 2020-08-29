@@ -38,6 +38,7 @@ public class ProfileFragment extends Fragment {
         profilePic = v.findViewById(R.id.profile_pic);
         profileName= v.findViewById(R.id.profile_name);
 
+        profileName.setText("Anne");
         return v;
     }
 }
