@@ -5,4 +5,10 @@
     <color name="colorAccent">#03DAC5</color>
 
     <color name="white">#ffffff</color>
+    <color name="profile_back">#26214A</color>
+    <color name="light_grey">#D8D7D7</color>
+    <color name="translucent">#D2FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="blue">#0b63fb</color>
+    <color name="dark_blue">#3b5998</color>
 </resources>

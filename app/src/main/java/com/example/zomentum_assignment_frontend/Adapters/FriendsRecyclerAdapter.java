@@ -20,6 +20,7 @@ public class FriendsRecyclerAdapter extends RecyclerView.Adapter<FriendsRecycler
     private Context mContext;
     private ArrayList<FriendDetailsClass> friends;
     private boolean isChat;
+
     public FriendsRecyclerAdapter(Context mContext, ArrayList<FriendDetailsClass> friends, boolean isChat) {
         this.mContext = mContext;
         this.friends = friends;
@@ -42,6 +43,16 @@ public class FriendsRecyclerAdapter extends RecyclerView.Adapter<FriendsRecycler
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
+        FriendDetailsClass friendDetailsClass = friends.get(position);
+
+
+        if(isChat){
+            holder.lastMsg.setVisibility(View.VISIBLE);
+            //holder.lastMsg.setText("hello");
+        }
+        else {
+            holder.lastMsg.setVisibility(View.GONE);
+        }
     }
 
     @Override
