@@ -6,6 +6,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +30,7 @@ public class HomeScreen extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     public static SearchView searchView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +39,10 @@ public class HomeScreen extends AppCompatActivity {
         appName = findViewById(R.id.app_name);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("whatsapp");
+        getSupportActionBar().setTitle("zomentum");
 
         searchView = findViewById(R.id.search);
+        searchView.setVisibility(View.VISIBLE);
 
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
@@ -81,6 +84,14 @@ public class HomeScreen extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            finishAffinity();
+        }
 
+        finish();
+    }
 }

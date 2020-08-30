@@ -50,6 +50,10 @@ public class MessagesActivity extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("username");
+        userName.setText(name);
+
         send = findViewById(R.id.btn_send);
         txt_msg = findViewById(R.id.text_send);
 

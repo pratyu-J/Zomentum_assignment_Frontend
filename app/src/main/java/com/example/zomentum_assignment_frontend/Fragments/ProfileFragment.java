@@ -13,6 +13,8 @@ import com.example.zomentum_assignment_frontend.R;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.example.zomentum_assignment_frontend.Activities.HomeScreen.searchView;
+
 public class ProfileFragment extends Fragment {
 
 
@@ -37,7 +39,6 @@ public class ProfileFragment extends Fragment {
 
         profilePic = v.findViewById(R.id.profile_pic);
         profileName= v.findViewById(R.id.profile_name);
-
         profileName.setText("Anne");
         return v;
     }

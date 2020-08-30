@@ -51,7 +51,7 @@ public class FriendListFragment extends Fragment {
         fillData();
         recyclerAdapter = new FriendsRecyclerAdapter(getContext(),list , false);
         recyclerView.setAdapter(recyclerAdapter);
-
+        searchView.setVisibility(View.VISIBLE);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -67,34 +67,13 @@ public class FriendListFragment extends Fragment {
         return v;
     }
 
-    /*@Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.menu, menu);
-
-        MenuItem menuItem = menu.findItem(R.id.search);
-        SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setQueryHint("Search");
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                recyclerAdapter.getFilter().filter(newText);
-                return false;
-            }
-        });
-        super.onCreateOptionsMenu(menu, inflater);
-    }*/
 
 
     public void fillData(){
+        list.clear();
         list.add(new FriendDetailsClass("1", "jojo", "", "offline"));
-        list.add(new FriendDetailsClass("1", "becky", "", "offline"));
-        list.add(new FriendDetailsClass("1", "adam", "", ""));
-        list.add(new FriendDetailsClass("1", "Chris", "", ""));
+        list.add(new FriendDetailsClass("2", "becky", "", "offline"));
+        list.add(new FriendDetailsClass("3", "adam", "", ""));
+        list.add(new FriendDetailsClass("4", "Chris", "", ""));
     }
 }
