@@ -16,24 +16,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/toolbar"
-            android:background="@color/profile_back"
+            android:background="@color/mudy_yellow"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
             app:popupTheme="@style/MenuStyle"
-            app:menu="@menu/menu">
+            >
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/app_name"
-                android:text="Application Name"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:layout_marginStart="25dp"
-                android:layout_marginLeft="25dp"
-                android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/app_name"
+                    android:text="zomentum"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:textStyle="bold"/>
 
+                <androidx.appcompat.widget.SearchView
+                    android:id="@+id/search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    />
 
+            </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -41,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:id="@+id/tab_layout"
-            android:background="@color/profile_back"
+            android:background="@color/mudy_yellow"
             android:layout_marginTop="1dp"
             app:tabSelectedTextColor="@color/colorAccent"
             app:tabIndicatorColor="@color/white"

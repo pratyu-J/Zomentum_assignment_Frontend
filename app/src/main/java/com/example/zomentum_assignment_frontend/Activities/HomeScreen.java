@@ -1,12 +1,18 @@
 package com.example.zomentum_assignment_frontend.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.example.zomentum_assignment_frontend.Adapters.ViewPagerAdapter;
@@ -19,9 +25,10 @@ import com.google.android.material.tabs.TabLayout;
 public class HomeScreen extends AppCompatActivity {
 
     TextView appName;
-    Toolbar toolbar;
+    public static Toolbar toolbar;
     TabLayout tabLayout;
     ViewPager viewPager;
+    public static SearchView searchView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +37,38 @@ public class HomeScreen extends AppCompatActivity {
         appName = findViewById(R.id.app_name);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle("whatsapp");
+
+        searchView = findViewById(R.id.search);
 
         tabLayout = findViewById(R.id.tab_layout);
         viewPager = findViewById(R.id.view_pager);
 
         setUpViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.help :
+                Toast.makeText(HomeScreen.this,  "Help", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.logout:
+                Toast.makeText(HomeScreen.this,  "Logout", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void setUpViewPager(ViewPager viewPager){

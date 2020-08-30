@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,16 +18,19 @@ import com.example.zomentum_assignment_frontend.Classes.FriendDetailsClass;
 import com.example.zomentum_assignment_frontend.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class FriendsRecyclerAdapter extends RecyclerView.Adapter<FriendsRecyclerAdapter.ViewHolder> {
+public class FriendsRecyclerAdapter extends RecyclerView.Adapter<FriendsRecyclerAdapter.ViewHolder> implements Filterable {
 
     private Context mContext;
     private ArrayList<FriendDetailsClass> friends;
+    private ArrayList<FriendDetailsClass> friendsListFull;
     private boolean isChat;
 
     public FriendsRecyclerAdapter(Context mContext, ArrayList<FriendDetailsClass> friends, boolean isChat) {
         this.mContext = mContext;
         this.friends = friends;
+        friendsListFull = new ArrayList<>(friends);
         this.isChat = isChat;
     }
 
@@ -74,6 +79,8 @@ public class FriendsRecyclerAdapter extends RecyclerView.Adapter<FriendsRecycler
         return friends.size();
     }
 
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView img;
@@ -90,4 +97,43 @@ public class FriendsRecyclerAdapter extends RecyclerView.Adapter<FriendsRecycler
             lastMsg = itemView.findViewById(R.id.last_message);
         }
     }
+
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+
+    private Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<FriendDetailsClass> filteredList = new ArrayList<>();
+
+            if(charSequence==null || charSequence.length()==0){
+                filteredList.addAll(friendsListFull);
+            }
+            else {
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+
+                for(FriendDetailsClass item: friendsListFull){
+                    if(item.getUsername().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+
+            friends.clear();
+            friends.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
+
 }

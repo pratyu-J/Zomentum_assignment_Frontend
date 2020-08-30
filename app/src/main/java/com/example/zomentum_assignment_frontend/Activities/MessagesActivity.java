@@ -23,7 +23,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MessagesActivity extends AppCompatActivity {
 
 
-    ArrayList<ChatClass> mChat;
+    ArrayList<ChatClass> mChat = new ArrayList<>();
     RecyclerView recyclerView;
 
     TextView userName;
@@ -70,6 +70,7 @@ public class MessagesActivity extends AppCompatActivity {
                 String message = txt_msg.getText().toString();
                 mChat.add(new ChatClass("", "", message, false));
                 adapter = new MessageRecyclerAdapter(MessagesActivity.this, mChat, "");
+                txt_msg.setText("");
                 recyclerView.setAdapter(adapter);
             }
         });
